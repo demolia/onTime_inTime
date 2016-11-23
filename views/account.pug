@@ -1,0 +1,28 @@
+doctype html
+html
+	title Alarm Settings
+	meta(charset='utf-8')
+	link(href='static/account.css', rel='stylesheet')
+	link(href='static/css/foundation.min.css', rel='stylesheet')
+ 	
+	body.bg
+		nav#mySidenav.w3-sidenav.w3-white.w3-card-2(style='display:none')
+			a.w3-closenav.w3-large(href='javascript:void(0)', onclick='w3_close()') Close ×
+			a(href='#') Change Password
+			a(href='#') Last Login
+		header.w3-container.w3-teal
+			span.w3-opennav.w3-xlarge(onclick='w3_open()') ☰
+
+		script(type='text/javascript', src='static/jquery-3.1.1.min.js')
+		
+		script(type='text/javascript', src='static/account.js')
+		
+		script(type='text/javascript', src='static/js/foundation.min.js')
+	
+		script.
+			function w3_open() {
+			document.getElementById("mySidenav").style.display = "block";
+			}
+			function w3_close() {
+			document.getElementById("mySidenav").style.display = "none";
+			}
