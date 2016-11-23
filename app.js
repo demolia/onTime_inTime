@@ -29,3 +29,32 @@ app.use(session({
 app.set( 'view engine', 'pug' )
 
 app.set( 'views', __dirname + '/views' )
+
+
+// Define database structure
+
+// Define models
+
+// Define relations
+
+
+
+// Set express routes
+// Testing
+app.get( '/alarm', ( req, res ) => {
+	console.log( 'pong' )
+	res.render( 'account' )
+})
+
+
+// Sync database
+
+
+
+// Account
+
+
+// App will listen on 8000
+app.listen(8000, () => {
+    console.log( 'Server running' )
+})
