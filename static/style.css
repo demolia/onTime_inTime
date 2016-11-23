@@ -1,0 +1,22 @@
+#timer {
+	font-size: 5em;
+	color: hsla(360, 100%, 100%, 0.75);
+	font-family: arial;
+	padding-top: 150px;
+	text-align: center;
+	margin-top: 300px;
+
+	
+}
+
+#display {
+	background: -moz-linear-gradient(45deg, hsla(222,26%,33%,1) 0%, hsla(222,26%,33%,1) 100%); /* Firefox */
+	background: -webkit-linear-gradient(45deg, hsla(222,26%,33%,1) 0%,hsla(222,26%,33%,1) 100%); /* chrome & safari*/
+	background: linear-gradient(45deg, hsla(222,26%,33%,1) 0%,hsla(222,26%,33%,1) 100%); /* safari, chrome, firefox, opera*/
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	width: 400px;
+	height: 400px;
+	border-radius: 100%;
+	border-top: 5px solid red;
+}
