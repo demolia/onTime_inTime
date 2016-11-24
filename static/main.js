@@ -29,6 +29,7 @@ $(document).ready(function() {
       months[11] = "December";
 
 
+
       let currentTime= new Date();
       let date = currentTime.getDate();
       let hours = currentTime.getHours();
@@ -57,6 +58,5 @@ $(document).ready(function() {
 
 
 })
-
 
 
