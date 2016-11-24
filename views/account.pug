@@ -1,28 +1,54 @@
 doctype html
 html
-	title Alarm Settings
-	meta(charset='utf-8')
-	link(href='static/account.css', rel='stylesheet')
-	link(href='static/css/foundation.min.css', rel='stylesheet')
- 	
-	body.bg
-		nav#mySidenav.w3-sidenav.w3-white.w3-card-2(style='display:none')
-			a.w3-closenav.w3-large(href='javascript:void(0)', onclick='w3_close()') Close ×
-			a(href='#') Change Password
-			a(href='#') Last Login
-		header.w3-container.w3-teal
-			span.w3-opennav.w3-xlarge(onclick='w3_open()') ☰
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		title Alarm Settings
+		link(rel='stylesheet', href='css/foundation.min.css')
+		link(rel='stylesheet', href='css/app.css')
+		link(href='/account.css', rel='stylesheet')
+		link(rel='stylesheet' href='css/app.css')
+	 	
+		body.bg
+			
+			nav#mySidenav.w3-sidenav.w3-white.w3-card-2(style='display:none')
+				ul.w3-closenav.w3-large(href='javascript:void(0)', onclick='w3_close()') Close ×
+					li
+						a(href='#') Change Password
+					li
+						a(href='#') Last Login
+			header.w3-container.w3-teal
+				span.w3-opennav.w3-xlarge(onclick='w3_open()') 
+					img(src='/img/menu.png')
 
-		script(type='text/javascript', src='static/jquery-3.1.1.min.js')
+			div.row
+				div.large-2.columns
+					h2 Test
+					p| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				div.large-8.columns
+					.loader.float-center
+						#display
+							#date
+							#time
+							#weekdays
+				div.large-2.columns
+					h2 Test
+					p| Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					
+				
+
+
+			script(type='text/javascript', src='/jquery-3.1.1.min.js')
+			
+			script(type='text/javascript', src='/account.js')
+			
+			script(type='text/javascript', src='/js/vendor/foundation.min.js')
 		
-		script(type='text/javascript', src='static/account.js')
-		
-		script(type='text/javascript', src='static/js/foundation.min.js')
-	
-		script.
-			function w3_open() {
-			document.getElementById("mySidenav").style.display = "block";
-			}
-			function w3_close() {
-			document.getElementById("mySidenav").style.display = "none";
-			}
+			script.
+				function w3_open() {
+				document.getElementById("mySidenav").style.display = "block";
+				}
+				function w3_close() {
+				document.getElementById("mySidenav").style.display = "none";
+				}
