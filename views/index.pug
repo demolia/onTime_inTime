@@ -6,21 +6,62 @@ html
 	link(href='./index.css', rel='stylesheet')
 
 	body.indexbg
-		div.row
-			div.medium-6.columns.end
-				div.card
+		div.row.divlogin
+			div.medium-6.columns.end.large-offset-3
+				div.card.float-center.cardcenter
 					div.content
-					span.title Robert Frost
-					p
-						| Two roads diverged in a yellow wood,	 And sorry I could not travel both	 And be one traveler, long I stood	 And looked down one as far as I could	. To where it bent in the undergrowth;
+					span.title.cardcenterh1 On time In Time 
+					p Please log-in
+
+					form(name="myForm" method='POST', action='/login', autocomplete="off" onsubmit="return validateForm()")
+						Label(for="email") Email 
+						input(name="email", type="email", id="email" placeholder="Email adress")
+						Label(for="password") Pasword 
+						input(name="password", type="password", id="password" placeholder="Secrate")
+						input(type="submit", value="Submit")
+						p= message
+
 					div.action
-						a(href='#') This is a link
-						a(href='#') This is a link
+						a.registerform(href='#') Registres
+						a(href='#openModal') FAQ
+
+		div.row.divregister
+			div.medium-6.columns.end.large-offset-3
+				div.card.float-center.cardcenter
+					div.content
+					span.title.cardcenterh1 On time In Time Register form
+					p Please register 
+
+					form(method='POST', action='/sign', autocomplete="off")
+						Label(for="name") Name 
+						input(name="name", type="text", id="name" placeholder="First Name")
+						Label(for="email") Email 
+						input(name="email", type="email", id="email" placeholder="Email adress")
+						Label(for="password") Pasword 
+						input(name="password", type="password", id="password" placeholder="Password")
+						input(type="submit", value="Submit")
+					p= message
+
+					div.action
+						a.loginform(href='#') Log-in
+						a(href='#openModal') FAQ
+
+	div#openModal.modalDialog
+		div
+			a.close(href='#close', title='Close') X
+			h2 Frequently Ask Questions 
+			br
+			p The On time In Time Web application is a SMART ALARM
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				| tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				| quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				| consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				| cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				| proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
-	script(type='text/javascript', src='static/jquery-3.1.1.min.js')
-		
-	script(type='text/javascript', src='static/js/foundation.min.js')
 
-	script(type='text/javascript', src='static/index.js')
+script(type='text/javascript', src='./jquery-3.1.1.min.js')
+script(type='text/javascript', src='./js/vendor/foundation.min.js')
+script(type='text/javascript', src='/main.js')
 	

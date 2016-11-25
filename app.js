@@ -42,7 +42,7 @@ let User = db.define( 'user', {
 } )
 
 let Setting = db.define ( 'setting', {
-	setting: sequelize.STRING,
+	setting: sequelize.STRING
 } )
 
 
@@ -63,7 +63,7 @@ app.get ('/', (req, res) => {
 })
 
 
-app.get( '/alarm', ( req, res ) => {
+app.get( '/account', ( req, res ) => {
 	console.log( 'pong' )
 	res.render( 'account' )
 		user: req.session.user
@@ -94,7 +94,8 @@ app.post( '/settings', ( req, res ) => {
 			            })
 		        }
     	})
-        res.redirect( '/alarm' )
+        console.log( 'Password updated!' )
+        res.redirect( '/settings' )
         })
 })
 
