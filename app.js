@@ -82,21 +82,26 @@ app.get( '/settings', ( req, res ) => {
 // Change passwordform
 app.post( '/settings', ( req, res ) => {
 	User.findOne({
-        where: { id: req.session.id }
+        where: { id: req.session.user.id }
     }).then( ( thisuser ) => {
-        thisuser.bcrypt.compare(req.body.password, 5, (err, data) => {
+    	console.log( thisuser.password )
+    	console.log( req.body.password )
+        bcrypt.compare(req.body.password, thisuser.password, ( err, data ) => {
         	if (err !== undefined) {
     			console.log(err);
-	    	}   else {
-			        // store it in the database
-			        User.Update({
-			 	        password: hash
-			            })
-		        }
-    	})
+	    	} else {
+			    // store it in the database
+			    bcrypt.hash( req.body.new, 5, function ( err, hash ) {	
+    				User.Update ({
+			 	    	password: hash
+			        })
+			    }) 
+			}
         console.log( 'Password updated!' )
-        res.redirect( '/settings' )
-        })
+        res.redirect( '/account' )
+    	})
+    })
+
 })
 
 // Send to backend
@@ -223,3 +228,7 @@ db.sync ( {force: true} ).then( () => {
 app.listen(8000, () => {
     console.log( 'Server running' )
 })
+
+
+
+
