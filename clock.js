@@ -51,10 +51,22 @@ app.post("/clock", (req, res) => {
 
 app.post("/currenttime", (req, res) => {
 
-	console.log(req.body.time + " vind ik leuk")
+	console.log(typeof req.body.time)
 
 	res.send("send me thousands of responses please")
 
+	
+	SetTime.findAll({
+		where: {settime: req.body.time}
+	}).then(cheese => {
+		console.log(cheese.length)
+		if (cheese.length !== 0) {
+			console.log( "time to say hello")
+		}
+		else {
+			console.log("no time like this in the database")
+		}
+	})
 
 
 })
@@ -84,13 +96,13 @@ database.sync({force: true}).then( ( ) => {
 		username: "NoMadBunny",
 		password: "one",
 		
-	})
+	// }).then(user => {
+	// 	user.createSetTime({
+	// 		settime: "13:00"
+	// 	})
+	// })
 
-	SetTime.create ({
-		settime: '12:00:00',
-		userId: 1,
-	})
-
+})
 })
 //Make the server listen on part 1337
 app.listen(1337, ( ) => {
