@@ -51,7 +51,7 @@ app.post("/clock", (req, res) => {
 
 app.post("/currenttime", (req, res) => {
 
-	console.log(req.body.time)
+	console.log(req.body.time + " vind ik leuk")
 
 	res.send("send me thousands of responses please")
 
