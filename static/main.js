@@ -71,7 +71,7 @@ $(document).ready(function() {
       console.log("post made " + hourNow)
     })
     
-  }, 5000)
+  }, 60000)
   
 
   function checkTime(i) {

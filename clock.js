@@ -2,6 +2,7 @@
 const express = require ("express")
 const bodyParser = require('body-parser');
 const Sequelize = require('Sequelize');
+const helper = require('sendgrid').mail
 const app = express()
 
 //connecting to the database
@@ -61,7 +62,24 @@ app.post("/currenttime", (req, res) => {
 	}).then(cheese => {
 		console.log(cheese.length)
 		if (cheese.length !== 0) {
-			console.log( "time to say hello")
+			from_email = new helper.Email("jimmyvoskuil@msn.com")
+			to_email = new helper.Email("yarithjoseph@gmail.com")
+			subject = "Sending with SendGrid is Fun"
+			content = new helper.Content("text/plain", "and easy to do anywhere, even with Node.js")
+			mail = new helper.Mail(from_email, subject, to_email, content)
+			console.log(process.env.SENDGRID_API_KEY)
+			var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+			var request = sg.emptyRequest({
+				method: 'POST',
+				path: '/v3/mail/send',
+				body: mail.toJSON()
+			});
+
+			sg.API(request, function(error, response) {
+				console.log(response.statusCode)
+				console.log(response.body)
+				console.log(response.headers)
+			})
 		}
 		else {
 			console.log("no time like this in the database")

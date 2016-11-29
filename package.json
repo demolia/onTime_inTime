@@ -11,6 +11,7 @@
     "parser": "^0.1.4",
     "pg": "^6.1.0",
     "pug": "^2.0.0-beta6",
+    "sendgrid": "^4.7.1",
     "sequelize": "^3.27.0"
   },
   "devDependencies": {},
