@@ -3,8 +3,9 @@
 
 <head>
 	<title>Clockwork</title>
-    <link rel="stylesheet" type="text/css" href="./static/style.css">
 
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Black+Ops+One', rel='stylesheet'>
 
 </head>
 
@@ -25,9 +26,30 @@
             </div>
 
             
-
         </div>
     </div>
+
+  <form action="/index" method="POST">
+
+
+    <label for="setTime">setTime: </label>
+    <input type="time" id="setTime"  name="time"  value="07:00:00">
+
+    <label for="hours">hours </label>
+    <input id="hour" type="number" name="hours" min="0" max="23" />
+
+    <label for="minutes">minutes </label>
+    <input id="minute" type="number" name="minutes" min="00" max="59"  />
+
+    <label for="seconds">seconds </label>
+    <input id="second" type="number" name="seconds" min="00" max="59"  />
+
+    <button type="submit"> Set Time </button>
+    
+
+
+  </form>
+
 
 
 <div class="spinner">
@@ -35,25 +57,13 @@
  </div>
 
  <div class="spinner2">
-</div>
+ </div> 
 
 
 
 
-
-
-<!-- <div class="item html">
-    <h2>0</h2>
-    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-     <g>
-      <title>Layer 1</title>
-      <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none"/>
-     </g>
-    </svg>
-</div> -->
-
-    <script src="./static/jquery-3.1.1.min.js"></script>
-    <script src="./static/main.js"></script> 
+ <script src="./static/jquery-3.1.1.min.js"></script>
+ <script src="./static/main.js"></script> 
 
 </body>
 </html>

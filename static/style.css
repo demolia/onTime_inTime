@@ -4,8 +4,8 @@
 ////////////////////////////////////////////
 */
 body {
-background-image: url("bg.jpg");
-background-size: cover;;
+	background-image: url("bg.jpg");
+	background-size: cover;;
 }
 
 
@@ -16,10 +16,12 @@ background-size: cover;;
 
 /* partent element of the timer div and the display div. The loader is ONLY for the outside of the clock*/
 .loader {
-	border: 15px solid hsla(146, 100%, 49%, 1);
+	
+	border: 15px solid hsla(351, 91%, 33%, 0.75);
 	border-radius: 100%;
 	width: 400px;
 	height: 400px;
+	
 	
 
 }
@@ -36,12 +38,11 @@ background-size: cover;;
 }
 
 
-
 /* this part is purely for the numbers that are displayed it is linked with a javascript file */
 #time {
 	font-size: 5em;
 	color: hsla(360, 100%, 100%, 0.75);
-	font-family: arial;
+	font-family: 'Black Ops One', cursive;
 	text-align: center;
 
 
@@ -59,12 +60,12 @@ background-size: cover;;
 
 /* this part is the display of the clock or the background if you will*/
 #display {
-	background: -moz-linear-gradient(45deg, hsla(222,26%,33%,1) 0%, hsla(222,26%,33%,1) 100%); /* Firefox */
-	background: -webkit-linear-gradient(45deg, hsla(222,26%,33%,1) 0%,hsla(222,26%,33%,1) 100%); /* chrome & safari*/
-	background: linear-gradient(45deg, hsla(222,26%,33%,1) 0%,hsla(222,26%,33%,1) 100%); /* safari, chrome, firefox, opera*/
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: -moz-linear-gradient(top, hsla(247,20%,9%,1) 0%, hsla(244,20%,17%,1) 49%, hsla(247,20%,9%,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13121b', endColorstr='#13121b',GradientType=0 ); /* IE6-9 */
 
-	width: 400px;
+	width:400px;
 	height: 400px;
 	border-radius: 100%;
 
@@ -80,7 +81,7 @@ background-size: cover;;
 	border-radius: 100%;
 	position: absolute;
 	margin-left: 500px;
-		background: -moz-linear-gradient(45deg, hsla(222,26%,33%,1) 0%, hsla(222,26%,33%,1) 100%); /* Firefox */
+	background: -moz-linear-gradient(45deg, hsla(222,26%,33%,1) 0%, hsla(222,26%,33%,1) 100%); /* Firefox */
 	background: -webkit-linear-gradient(45deg, hsla(222,26%,33%,1) 0%,hsla(222,26%,33%,1) 100%); /* chrome & safari*/
 	background: linear-gradient(45deg, hsla(222,26%,33%,1) 0%,hsla(222,26%,33%,1) 100%); /* safari, chrome, firefox, opera*/
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
