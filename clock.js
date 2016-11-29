@@ -28,13 +28,13 @@ app.get("/ping", (req, res) => {
 
 
 // get and render the main page, which is the log in page
-app.get("/", (req, res) => {
+app.get("/clock", (req, res) => {
 
-	res.render("index")
+	res.render("clock")
 })
 
 
-app.post("/index", (req, res) => {
+app.post("/clock", (req, res) => {
 
 	console.log(typeof req.body.setTime)
 
@@ -43,7 +43,7 @@ app.post("/index", (req, res) => {
 		
 	}).then( () => {
 		console.log(req.body.time)
-		res.redirect('/')
+		res.redirect('clock')
 	})
 
 
