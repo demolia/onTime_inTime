@@ -2,6 +2,8 @@
 $(document).ready(function() {
     startTime()
 
+    var currentTime
+    var hourNow 
 
     function startTime() {
 
@@ -30,7 +32,9 @@ $(document).ready(function() {
 
 
 
-      let currentTime= new Date();
+      currentTime= new Date(); 
+      
+
       let date = currentTime.getDate();
       let hours = currentTime.getHours();
       let minutes = currentTime.getMinutes();
@@ -39,6 +43,7 @@ $(document).ready(function() {
       let month = months[currentTime.getMonth()];
       let year = currentTime.getFullYear();
       
+
       minutes = checkTime(minutes);
       seconds = checkTime(seconds);
       document.getElementById('time').innerHTML = hours + ":" + minutes + ":" + seconds;
@@ -48,6 +53,19 @@ $(document).ready(function() {
 
 
   }
+
+
+  setInterval(function () {
+ 
+    console.log(currentTime)
+
+
+    $.post("/currenttime", {time: currentTime}, function (responsedata) {
+      console.log("post made")
+    })
+    document.getElementById('timeinput')
+  }, 60000)
+  
 
   function checkTime(i) {
     if (i < 10) {
@@ -60,3 +78,11 @@ $(document).ready(function() {
 })
 
 
+
+var d       = new Date();
+var hour    = d.getHours();  /* Returns the hour (from 0-23) */
+var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
+var result  = hour + ":"  + minutes;
+
+
+console.log(result + " I log the current time")
