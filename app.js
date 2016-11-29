@@ -92,7 +92,7 @@ app.post( '/settings', ( req, res ) => {
 	    	} else {
 			    // store it in the database
 			    bcrypt.hash( req.body.new, 5, function ( err, hash ) {	
-    				User.Update ({
+    				thisuser.updateAttributes ({
 			 	    	password: hash
 			        })
 			    }) 
