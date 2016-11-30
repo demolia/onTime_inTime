@@ -89,7 +89,7 @@ app.post('/login', bodyParser.urlencoded({extended: true}), function (request, r
 			bcrypt.compare(request.body.password, user.password, function(err, res) {
     			if (res == true) {
     				request.session.user = user;
-					response.redirect('account');
+					response.redirect('alarm');
 				}
 				// bcrypt is hashing the password and making sure it is saved secure in my database.
 				// the compare must between the whole bracket to make sure the password can be compared.
