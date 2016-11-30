@@ -4,12 +4,13 @@ const app        = express( )
 const bodyParser = require( 'body-parser' )
 const session    = require( 'express-session' )
 const sequelize  = require( 'sequelize' )
-const bcrypt 	 = require( 'bcrypt' )
+const helper = require('sendgrid').mail
+// const bcrypt 	 = require( 'bcrypt' )
 // NEW 	!!!!
 const flash 	 = require( 'connect-flash' )
-const passport 	 = require( 'passport' ) 
-const FacebookStrategy = require( 'passport-facebook' ).Strategy
-const FacebookTokenStrategy = require( 'passport-facebook-token' )
+// const passport 	 = require( 'passport' ) 
+// const FacebookStrategy = require( 'passport-facebook' ).Strategy
+// const FacebookTokenStrategy = require( 'passport-facebook-token' )
 
 
 
@@ -29,57 +30,57 @@ app.use(session({
 
 
 // NEW !!!!!
-app.use(passport.initialize())
+// app.use(passport.initialize())
 
-app.use(passport.session()) // persistent login sessions
+// app.use(passport.session()) // persistent login sessions
 
 app.use(flash()) // use connect-flash for flash messages stored in session 
 
-passport.use(new FacebookStrategy({
-	'clientID' : FACEBOOK_APP_ID,
-	'clientSecret' : FACEBOOK_APP_SECRET,
-	'callbackURL' : 'http://localhost:8000/auth/facebook/callback',
-	'profileFields': ['id', 'displayName', 'email', 'picture.width(800).height(800)']
-},
-  	// facebook will send back the tokens and profile
-  	function(access_token, refresh_token, profile, done) {
-    // asynchronous
-    process.nextTick(function() {
+// passport.use(new FacebookStrategy({
+// 	// 'clientID' : FACEBOOK_APP_ID,
+// 	'clientSecret' : FACEBOOK_APP_SECRET,
+// 	'callbackURL' : 'http://localhost:8000/auth/facebook/callback',
+// 	'profileFields': ['id', 'displayName', 'email', 'picture.width(800).height(800)']
+// },
+//   	// facebook will send back the tokens and profile
+//   	function(access_token, refresh_token, profile, done) {
+//     // asynchronous
+//     process.nextTick(function() {
 
-      // find the user in the database based on their facebook id
-      User.findOne({ 'id' : profile.id }, function(err, user) {
+//       // find the user in the database based on their facebook id
+//       User.findOne({ 'id' : profile.id }, function(err, user) {
 
-        // if there is an error, stop everything and return that
-        // ie an error connecting to the database
-        if (err)
-        	return done(err)
+//         // if there is an error, stop everything and return that
+//         // ie an error connecting to the database
+//         if (err)
+//         	return done(err)
 
-          // if the user is found, then log them in
-          if (user) {
-            return done(null, user); // user found, return that user
-        } else {
-            // if there is no user found with that facebook id, create them
-            var newUser = new User()
+//           // if the user is found, then log them in
+//           if (user) {
+//             return done(null, user); // user found, return that user
+//         } else {
+//             // if there is no user found with that facebook id, create them
+//             var newUser = new User()
 
-            // set all of the facebook information in our user model
-            newUser.fb.id    = profile.id; // set the users facebook id                 
-            newUser.fb.access_token = access_token; // we will save the token that facebook provides to the user                    
-            newUser.fb.firstName  = profile.name.givenName;
-            newUser.fb.lastName = profile.name.familyName; // look at the passport user profile to see how names are returned
-            newUser.fb.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+//             // set all of the facebook information in our user model
+//             newUser.fb.id    = profile.id; // set the users facebook id                 
+//             newUser.fb.access_token = access_token; // we will save the token that facebook provides to the user                    
+//             newUser.fb.firstName  = profile.name.givenName;
+//             newUser.fb.lastName = profile.name.familyName; // look at the passport user profile to see how names are returned
+//             newUser.fb.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
-            // save our user to the database
-            newUser.save(function(err) {
-            	if (err)
-            		throw err;
+//             // save our user to the database
+//             newUser.save(function(err) {
+//             	if (err)
+//             		throw err;
 
-              // if successful, return the new user
-              return done(null, newUser);
-          });
-        } 
-    });
-  });
-}));
+//               // if successful, return the new user
+//               return done(null, newUser);
+//           });
+//         } 
+//     });
+//   });
+// }));
 
 
 
@@ -108,8 +109,8 @@ let User = db.define( 'user', {
 	password: sequelize.STRING
 } )
 
-let Setting = db.define ( 'setting', {
-	setting: sequelize.STRING,
+let SetTime = db.define('settime', {
+  settime: sequelize.STRING,
 
 	password: sequelize.STRING,
 	number: sequelize.STRING
@@ -117,23 +118,24 @@ let Setting = db.define ( 'setting', {
 
 
 // Define relations
-User.hasMany( Setting )
-Setting.belongsTo ( User )
+User.hasMany( SetTime )
+SetTime.belongsTo ( User )
 
 
 
 
 
-// NEW !!!
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
+// // NEW !!!
+// passport.serializeUser(function(user, done) {
+//   done(null, user.id);
+// });
+
+// passport.deserializeUser(function(id, done) {
+//   User.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
 
 
 
@@ -164,30 +166,30 @@ app.get( '/account', ( req, res ) => {
 
 
 
-// NEW !!!
-app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['user_friends', 'publish_actions'] }));
+// // NEW !!!
+// app.get('/auth/facebook',
+//   passport.authenticate('facebook', { scope: ['user_friends', 'publish_actions'] }));
 
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+// app.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
 
-// NEW !!!
-app.post('/', passport.authenticate('local-login', {
-	successRedirect: '/account',
-	failureRedirect: '/',
-	failureFlash: true
-}))
+// // NEW !!!
+// app.post('/', passport.authenticate('local-login', {
+// 	successRedirect: '/account',
+// 	failureRedirect: '/',
+// 	failureFlash: true
+// }))
 
-app.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login',
-                                   failureFlash: true })
-);
+// app.post('/login',
+//   passport.authenticate('local', { successRedirect: '/',
+//                                    failureRedirect: '/login',
+//                                    failureFlash: true })
+// );
 
 // get and render the main page, which is the log in page
 app.get("/clock", (req, res) => {
@@ -373,29 +375,29 @@ app.post("/currenttime", (req, res) => {
 // Sync database
 db.sync ( {force: true} ).then( () => {
 	console.log ( 'Synced')
-	bcrypt.hash('1234', 5, function(err, hash) {
-		User.create ({
-			name: 'Jimmy',
-			email: 'jimmyvoskuil@msn.com',
-			password: hash
-		}).then (user => {
-			user.createSetting( {
-				setting: 'FillTHISin'
-			})
-		})
-	})
-	bcrypt.hash('1234', 5, function(err, hash) {	
-		User.create ({
-			name: 'Mentor',
-			email: 'mentor@gmail.com',
-			password: hash
+	// bcrypt.hash('1234', 5, function(err, hash) {
+	// 	User.create ({
+	// 		name: 'Jimmy',
+	// 		email: 'jimmyvoskuil@msn.com',
+	// 		password: hash
+	// 	}).then (user => {
+	// 		user.createSetting( {
+	// 			setting: 'FillTHISin'
+	// 		})
+	// 	})
+	// })
+	// bcrypt.hash('1234', 5, function(err, hash) {	
+	// 	User.create ({
+	// 		name: 'Mentor',
+	// 		email: 'mentor@gmail.com',
+	// 		password: hash
 
-		}).then (user => {
-			user.createSetting( {
-				setting: 'FillTHISin'
-			})
-		})
-	})
+	// 	}).then (user => {
+	// 		user.createSetting( {
+	// 			setting: 'FillTHISin'
+	// 		})
+	// 	})
+	// })
 }) 
 
 

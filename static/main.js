@@ -107,7 +107,6 @@ function showlogin() {
 	$(".divlogin").show()
 }
 
-})
 
 
 
