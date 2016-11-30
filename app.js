@@ -36,8 +36,8 @@ app.use(passport.session()) // persistent login sessions
 app.use(flash()) // use connect-flash for flash messages stored in session 
 
 passport.use(new FacebookStrategy({
-	'clientID' : FACEBOOK_APP_ID,
-	'clientSecret' : FACEBOOK_APP_SECRET,
+	'clientID' : '1739845823009649',
+	'clientSecret' : '05a175fe25a6f31f1c4f47b952464bcd',
 	'callbackURL' : 'http://localhost:8000/auth/facebook/callback',
 	'profileFields': ['id', 'displayName', 'email', 'picture.width(800).height(800)']
 },
