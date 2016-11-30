@@ -4,34 +4,32 @@
   "description": "Smart Home Project",
   "main": "app.js",
   "dependencies": {
-    "bcrypt": "^0.8.7",
-    "body": "^5.1.0",
-    "body-parser": "^1.15.2",
-    "connect": "^3.5.0",
-    "express": "^4.14.0",
-    "fs": "^0.0.1-security",
-    "node-sass": "^3.13.0",
-    "parser": "^0.1.4",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "passport-oauth": "^1.0.0",
-    "passport-openid": "^0.4.0",
-    "pg": "^6.1.0",
-    "pug": "^2.0.0-beta6",
-    "sequelize": "^3.27.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/demolia/onTime_inTime.git"
-  },
-  "author": "Jimmy, Elisibeth, Yarith",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/demolia/onTime_inTime/issues"
-  },
-  "homepage": "https://github.com/demolia/onTime_inTime#readme"
+   "bcrypt": "^0.8.7",
+   "body-parser": "^1.15.2",
+   "connect": "^3.5.0",
+   "express": "^4.14.0",
+   "fs": "^0.0.1-security",
+   "node-sass": "^3.13.0",
+   "parser": "^0.1.4",
+   "passport": "^0.3.2",
+   "passport-local": "^1.0.0",
+   "passport-oauth": "^1.0.0",
+   "passport-openid": "^0.4.0",
+   "pg": "^6.1.0",
+   "pug": "^2.0.0-beta6",
+ "sequelize": "^3.27.0"  },
+ "devDependencies": {},
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+"repository": {
+  "type": "git",
+  "url": "git+https://github.com/demolia/onTime_inTime.git"
+},
+"author": "Jimmy, Elisibeth, Yarith",
+"license": "MIT",
+"bugs": {
+  "url": "https://github.com/demolia/onTime_inTime/issues"
+},
+"homepage": "https://github.com/demolia/onTime_inTime#readme"
 }

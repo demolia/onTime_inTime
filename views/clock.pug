@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		title Clockwork
+		link(rel='stylesheet', type='text/css', href='./style.css')
+		link(href='https://fonts.googleapis.com/css?family=Black+Ops+One', ,='', rel='stylesheet')
+	body
+		.loader
+			#display
+				#date
+				#time
+				#weekdays
+		form(action='/clock', method='POST')
+			label(for='setTime') setTime: 
+			input#setTime(type='time', name='time', value='07:00:00')
+			button(type='submit')  Set Time 
+		.spinner
+		.spinner2
+		script(src='./jquery-3.1.1.min.js')
+		script(src='./main.js')

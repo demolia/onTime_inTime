@@ -1,0 +1,124 @@
+/*
+////////////////////////////////////////////
+ THIS IS THE SECTION FOR THE DIGITAL CLOCK
+////////////////////////////////////////////
+*/
+body {
+	background-image: url("bg.jpg");
+	background-size: cover;;
+}
+
+
+
+
+
+
+
+/* partent element of the timer div and the display div. The loader is ONLY for the outside of the clock*/
+.loader {
+	
+	border: 15px solid hsla(351, 91%, 33%, 0.75);
+	border-radius: 100%;
+	width: 400px;
+	height: 400px;
+	
+	
+
+}
+
+
+#date {
+	font-size: 1.4em;
+	color: hsla(360, 100%, 100%, 0.75);
+	font-family: arial;
+	padding-top: 140px;
+	text-align: center;
+	
+
+}
+
+
+/* this part is purely for the numbers that are displayed it is linked with a javascript file */
+#time {
+	font-size: 4.5em;
+	color: hsla(360, 100%, 100%, 0.75);
+	font-family: 'Black Ops One', cursive;
+	text-align: center;
+
+
+
+}
+
+#weekdays {
+	font-size: 2em;
+	color: hsla(360, 100%, 100%, 0.75);
+	font-family: arial;
+	text-align: center;
+
+}
+
+
+/* this part is the display of the clock or the background if you will*/
+#display {
+	background: -moz-linear-gradient(top, hsla(247,20%,9%,1) 0%, hsla(244,20%,17%,1) 49%, hsla(247,20%,9%,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13121b', endColorstr='#13121b',GradientType=0 ); /* IE6-9 */
+
+	width:400px;
+	height: 400px;
+	border-radius: 100%;
+
+
+}
+
+
+.spinner {
+	width: 200px;
+	height: 200px;
+	border: 15px solid hsla(351, 91%, 33%, 0.75);
+	border-top: 15px solid hsla(214, 100%, 49%, 1);
+	border-radius: 100%;
+	position: absolute;
+	margin-left: 500px;
+	background: -moz-linear-gradient(top, hsla(247,20%,9%,1) 0%, hsla(244,20%,17%,1) 49%, hsla(247,20%,9%,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13121b', endColorstr='#13121b',GradientType=0 ); /* IE6-9 */
+	animation: spin 60s infinite linear;
+}
+
+.spinner2 {
+	width: 100px;
+	height: 100px;
+	border: 15px solid hsla(351, 91%, 33%, 0.75);
+	border-top: 15px solid hsla(26, 85%, 52%, 0.79);
+	border-radius: 100%;
+	position: absolute;
+	margin-left: 550px;
+	margin-top: 50px;
+	background: -moz-linear-gradient(top, hsla(247,20%,9%,1) 0%, hsla(244,20%,17%,1) 49%, hsla(247,20%,9%,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13121b', endColorstr='#13121b',GradientType=0 ); /* IE6-9 */
+	animation: spin2 1s infinite linear;
+}
+
+
+@keyframes spin {
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin2 {
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
