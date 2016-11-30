@@ -15,7 +15,7 @@ html
 			nav#mySidenav.w3-sidenav.w3-white.w3-card-2(style='display:none')
 				ul.w3-closenav.w3-large(href='javascript:void(0)', onclick='w3_close()') Close ×
 					li
-						a(href='http://localhost:8000/settings') Change Password
+						a(href='http://localhost:8000/account') Set Alarm
 					li
 						a(href='#') Last Login {show time}
 			header.w3-container.w3-teal
@@ -23,23 +23,23 @@ html
 					img(src='/img/menu.png')
 
 			div.row
-				div.large-2.columns
-					h2 
-					p| 
-				div.large-8.columns
-					.loader.float-center
-						#display
-							#date
-							#time
-							#weekdays
-					.spinner
-					.spinner2
-	
-				div.large-2.columns
-					h2 
-					p| 
-					
-				
+					.col-sm-12
+						h1 Change Password
+			div.row
+					.col-sm-6.col-sm-offset-3
+						p.text-center
+							| Use the form below to change your password. Your password cannot be the same as your username.
+						form#passwordForm(method='post' action='/settings')
+							input#password.input-lg.form-control(type='password', name='password', placeholder='Current Password', autocomplete='off')
+							.row
+							br
+							input#password1.input-lg.form-control(type='password', name='new', placeholder='New Password', autocomplete='off')
+							.row
+							br
+							input#password1.input-lg.form-control(type='password', name='newer', placeholder='Confirm Password', autocomplete='off')
+							.row
+							br
+							input.col-xs-12.btn.btn-primary.btn-load.btn-lg(type='submit', data-loading-text='Changing Password...', value='Change Password')
 
 
 			script(type='text/javascript', src='/jquery-3.1.1.min.js')

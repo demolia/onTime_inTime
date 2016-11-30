@@ -1,6 +1,10 @@
 .indexbg {
+
 	background-image: url("/images/bed.jpg");
 	background-size: cover;
+  background-image: url("/images/bed.jpg");
+  background-size: cover;
+
 } 
 
 @import url(//fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900);
@@ -51,6 +55,7 @@ html, body {
 }
 
 .cardcenterh1 {
+
 	margin-top: -10px;
 	color: blue;
 }
@@ -105,6 +110,10 @@ html, body {
 	-moz-box-shadow: 1px 1px 3px #000;
 	-webkit-box-shadow: 1px 1px 3px #000;
 	box-shadow: 1px 1px 3px #000;
+
+  margin-top: -10px;
+  color: blue;
 }
+
 
 .close:hover { background: #00d9ff; }
