@@ -10,26 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/demolia/onTime_inTime.git"
   },
-<<<<<<< HEAD
   "keywords": [
     "sequelize",
     "passport",
     "javascript"
   ],
   "author": "Jimmy, Elisabeth, Yarith",
-=======
-  "author": "",
->>>>>>> 071757a88eb3234dd792b961ea8147673c58eb68
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/demolia/onTime_inTime/issues"
   },
   "homepage": "https://github.com/demolia/onTime_inTime#readme",
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt": "^0.8.7",
-=======
->>>>>>> 071757a88eb3234dd792b961ea8147673c58eb68
     "body-parser": "^1.15.2",
     "connect": "^3.5.0",
     "connect-flash": "^0.1.1",
