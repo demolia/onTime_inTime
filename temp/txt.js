@@ -1,12 +1,13 @@
 var https = require('https');
 
 var data = JSON.stringify({
- api_key: 'NEX_API_KEY', //NEX_API_KEY 
- api_secret: 'NEX_API_SECRET', //EX_API_SECRET
- to: '441632960960',
- from: '441632960961',
- text: 'Hello from Nexmo'
+
+ to: '0031630738105',
+ from: '0031630738105',
+ text: 'Hello from Nexmo, This is just a testietest'
 });
+
+
 
 var options = {
  host: 'rest.nexmo.com',
