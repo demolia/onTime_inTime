@@ -37,7 +37,11 @@ app.use(session({
 app.use(flash()) // use connect-flash for flash messages stored in session 
 
 // passport.use(new FacebookStrategy({
+<<<<<<< 6e4c3f4e2c7d194607d6b5452bd12d047fe9da79
 // 	// 'clientID' : FACEBOOK_APP_ID,
+=======
+// 	'clientID' : FACEBOOK_APP_ID,
+>>>>>>> added everything for texting api
 // 	'clientSecret' : FACEBOOK_APP_SECRET,
 // 	'callbackURL' : 'http://localhost:8000/auth/facebook/callback',
 // 	'profileFields': ['id', 'displayName', 'email', 'picture.width(800).height(800)']
