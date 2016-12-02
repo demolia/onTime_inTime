@@ -105,6 +105,7 @@ function showlogin() {
 	// To show Div Block
 	$(".divlogin").show()
 }
+})
 
 
 

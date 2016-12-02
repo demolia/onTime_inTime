@@ -1,9 +1,10 @@
 var https = require('https');
 
 var data = JSON.stringify({
-
- to: '0031630738105',
- from: '0031630738105',
+ api_key: 
+ api_secret:
+ to: 
+ from:
  text: 'Hello from Nexmo, This is just a testietest'
 });
 
