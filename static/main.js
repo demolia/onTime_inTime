@@ -4,6 +4,13 @@ $(document).ready(function() {
   var currentTime
   var hourNow 
 
+  function checkTime(i) {
+  	if (i < 10) {
+  		i = "0" + i
+    };  // add zero in front of numbers < 10
+    	return i;
+    }
+  
   function startTime() {
 
     const weekday = new Array(7);
@@ -71,20 +78,6 @@ $(document).ready(function() {
     })
     
   }, 60000)
-  
-
-  function checkTime(i) {
-    if (i < 10) {
-      i = "0" + i
-        };  // add zero in front of numbers < 10
-        return i;
-      }
-
-
-    
-
-
-
 
 $(".divregister").hide()
 

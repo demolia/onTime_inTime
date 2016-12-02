@@ -46,8 +46,11 @@ app.use(session({
 app.use(flash()) // use connect-flash for flash messages stored in session 
 
 // passport.use(new FacebookStrategy({
+<<<<<<< HEAD
 // 	// 'clientID' : FACEBOOK_APP_ID,
 
+=======
+>>>>>>> 057f1d1b48cfa9fb7a720d0f03fc6dab6e2cd6ce
 // 	'clientID' : FACEBOOK_APP_ID,
 // 	'clientSecret' : FACEBOOK_APP_SECRET,
 // 	'callbackURL' : 'http://localhost:8000/auth/facebook/callback',
@@ -251,8 +254,8 @@ setInterval( ()=>{
 	}).then(cheese => {
 		console.log(cheese.length)
 		if (cheese.length !== 0) {
-			from_email = new helper.Email("jimmyvoskuil@msn.com")
-			to_email 	= new helper.Email("jimmyvoskuil@gmail.com")
+			from_email = new helper.Email("insert mail")
+			to_email 	= new helper.Email("insert mail")
 			subject = "Please Wake Up!!!"
 			content = new helper.Content("text/plain", "Good Mythical Morning! Welcome out of bed or you know what will happen to you!")
 			mail = new helper.Mail(from_email, subject, to_email, content)
@@ -273,8 +276,8 @@ setInterval( ()=>{
 			var data = JSON.stringify({
 				apiKey: process.env.API_KEY,
 				apiSecret: process.env.API_SECRET,
-				to: '+31630738105',
-				from: '+31630738105',
+				to: '+31 insert mobiel or home number',
+				from: '+31 inset mobiel or home number',
 				text: 'Good Mythical, Welcome! Time to get out of bed and go go make something of your day :)'
 			});
 
@@ -307,11 +310,11 @@ setInterval( ()=>{
 			nexmo.calls.create({
 				to: [{
 					type: 'phone',
-					number: '+31630738105'
+					number: '+31 insert number'
 				}],
 				from: {
 					type: 'phone',
-					number: '+31630738105'
+					number: '+31 insert number'
 				},
 				answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
 			},
@@ -331,90 +334,6 @@ setInterval( ()=>{
 
 // app.post("/currenttime", (req, res) => {
 
-// 	console.log(typeof req.body.time)
-
-// 	res.send("send me thousands of responses please")
-
-
-// 	SetTime.findAll({
-// 		where: {settime: req.body.time}
-// 	}).then(cheese => {
-// 		console.log(cheese.length)
-// 		if (cheese.length !== 0) {
-// 			from_email = new helper.Email("jimmyvoskuil@msn.com")
-// 			to_email 	= new helper.Email("jimmyvoskuil@gmail.com")
-// 			subject = "Please Wake Up!!!"
-// 			content = new helper.Content("text/plain", "Good Mythical Morning! Welcome out of bed or you know what will happen to you!")
-// 			mail = new helper.Mail(from_email, subject, to_email, content)
-// 			console.log(process.env.SENDGRID_API_KEY)
-// 			var request = sg.emptyRequest({
-// 				method: 'POST',
-// 				path: '/v3/mail/send',
-// 				body: mail.toJSON()
-// 			});
-
-// 			sg.API(request, function(error, response) {
-// 				console.log(response.statusCode)
-// 				console.log(response.body)
-// 				console.log(response.headers)
-// 			})
-
-
-// 			var data = JSON.stringify({
-// 				apiKey: process.env.API_KEY,
-// 				apiSecret: process.env.API_SECRET,
-// 				to: '+31630738105',
-// 				from: '+31630738105',
-// 				text: 'Good Mythical, Welcome! Time to get out of bed and go go make something of your day :)'
-// 			});
-
-// 			var options = {
-// 				host: 'rest.nexmo.com',
-// 				path: '/sms/json',
-// 				port: 443,
-// 				method: 'POST',
-// 				headers: {
-// 					'Content-Type': 'application/json',
-// 					'Content-Length': Buffer.byteLength(data)
-// 				}
-// 			};
-
-// 			var req = https.request(options);
-
-// 			req.write(data);
-// 			req.end();
-
-// 			var responseData = '';
-// 			req.on('response', function(res){
-// 				res.on('data', function(chunk){
-// 					responseData += chunk;
-// 				});
-
-// 				res.on('end', function(){
-// 					console.log(JSON.parse(responseData));
-// 				});
-// 			});
-// 			nexmo.calls.create({
-// 				to: [{
-// 					type: 'phone',
-// 					number: '+31630738105'
-// 				}],
-// 				from: {
-// 					type: 'phone',
-// 					number: '+31630738105'
-// 				},
-// 				answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
-// 			},
-// 			function(err, res) {
-// 				if(err) { console.error(err); }
-// 				else { console.log(res); }
-// 			}
-// 			);
-
-// 		}
-// 		else {
-// 			console.log("no time like this in the database")
-// 		}
 // 	})
 
 
