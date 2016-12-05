@@ -3,7 +3,7 @@
  THIS IS THE SECTION FOR THE DIGITAL CLOCK
 ////////////////////////////////////////////
 */
-body {
+.bgImage {
 	background-image: url("bg2.jpg");
 	background-size: cover;;
 	margin: 0px;
