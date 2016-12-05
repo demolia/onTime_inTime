@@ -4,6 +4,13 @@ $(document).ready(function() {
   var currentTime
   var hourNow 
 
+  function checkTime(i) {
+  	if (i < 10) {
+  		i = "0" + i
+    };  // add zero in front of numbers < 10
+    	return i;
+    }
+  
   function startTime() {
 
     const weekday = new Array(7);
@@ -53,24 +60,23 @@ $(document).ready(function() {
 
   }
 
+  // setInterval(function () {
 
-  setInterval(function () {
-
-    var d       = new Date();
-    var hour    = d.getHours();  /* Returns the hour (from 0-23) */
-    hour = checkTime(hour);
-    var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
-    minutes = checkTime(minutes);
-    var result  = hour + ":"  + minutes;
-    var hourNow = result.toString();
+  //   var d       = new Date();
+  //   var hour    = d.getHours();  /* Returns the hour (from 0-23) */
+  //   hour = checkTime(hour);
+  //   var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
+  //   minutes = checkTime(minutes);
+  //   var result  = hour + ":"  + minutes;
+  //   var hourNow = result.toString();
   
 
 
-    $.post("/currenttime", {time: hourNow}, function (responsedata) {
-      console.log("post made " + hourNow)
-    })
+  //   $.post("/currenttime", {time: hourNow}, function (responsedata) {
+  //     console.log("post made " + hourNow)
+  //   })
     
-  }, 60000)
+  // }, 60000)
   
 
   function checkTime(i) {
@@ -81,31 +87,31 @@ $(document).ready(function() {
       }
 
 
-    })
+    }
 
 
+    $(".divregister").hide()
 
-$(".divregister").hide()
+    $(".divlogin").hide()
 
-$(".divlogin").hide()
-
-$('.registerform').click(function(){ showregister(); return false; })
+    $('.registerform').click(function(){ showregister(); return false; })
 
     function showregister() {
 	// To Hide Div Block
 	$(".divlogin").hide()
 	// To show Div Block
 	$(".divregister").show()
-}
+    }
 
 $('.loginform').click(function(){ showlogin(); return false; })
 
-function showlogin() {
+    function showlogin() {
 	// To Hide Div Block
-	$(".divregister").hide()
+	   $(".divregister").hide()
 	// To show Div Block
-	$(".divlogin").show()
-}
+	   $(".divlogin").show()
+    }
+})
 
 
 

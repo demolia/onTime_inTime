@@ -4,7 +4,16 @@ const app        = express( )
 const bodyParser = require( 'body-parser' )
 const session    = require( 'express-session' )
 const sequelize  = require( 'sequelize' )
-const helper = require('sendgrid').mail
+const helper	 = require('sendgrid').mail
+const https 	 = require('https');
+const Nexmo = require('nexmo');
+const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+const nexmo = new Nexmo({
+	apiKey: process.env.API_KEY,
+	apiSecret: process.env.API_SECRET,
+	applicationId: process.env.appId,
+	privateKey: __dirname + '/private.key',
+});
 // const bcrypt 	 = require( 'bcrypt' )
 // NEW 	!!!!
 const flash 	 = require( 'connect-flash' )
@@ -23,9 +32,9 @@ app.use( bodyParser.urlencoded({ extended: true }))
 
 
 app.use(session({
-    secret: 'oh wow very secret much security',
-    resave: true,
-    saveUninitialized: false
+	secret: 'oh wow very secret much security',
+	resave: true,
+	saveUninitialized: false
 }));
 
 
@@ -39,11 +48,18 @@ app.use(session({
 // app.use(passport.session()) // persistent login sessions
 
 
-app.use(flash()) // use connect-flash for flash messages stored in session 
+// app.use(flash()) // use connect-flash for flash messages stored in session 
 
 // passport.use(new FacebookStrategy({
+
 // 	// 'clientID' : FACEBOOK_APP_ID,
+
 // 	'clientSecret' : FACEBOOK_APP_SE CRET,
+
+
+
+// 	'clientID' : FACEBOOK_APP_ID,
+// 	'clientSecret' : FACEBOOK_APP_SECRET,
 // 	'callbackURL' : 'http://localhost:8000/auth/facebook/callback',
 // 	'profileFields': ['id', 'displayName', 'email', 'picture.width(800).height(800)']
 // },
@@ -222,7 +238,11 @@ let User = db.define( 'user', {
 
 let SetTime = db.define('settime', {
 
+
   settime: sequelize.STRING,
+
+	settime: sequelize.STRING,
+
 
 	password: sequelize.STRING,
 	number: sequelize.STRING
@@ -291,7 +311,7 @@ app.get( '/account', ( req, res ) => {
 
 	console.log( 'pong' )
 	res.render( 'account' )
-		user: req.session.user
+	user: req.session.user
 })
 
 
@@ -338,63 +358,136 @@ app.get( '/account', ( req, res ) => {
 // get and render the main page, which is the log in page
 app.get("/clock", (req, res) => {
 
-  res.render("clock")
+	res.render("clock")
 })
 
 
 app.post("/clock", (req, res) => {
 
-  console.log(typeof req.body.setTime)
+	console.log(typeof req.body.setTime)
 
-  SetTime.create ({
-    settime: req.body.time
-    
-  }).then( () => {
-    console.log(req.body.time)
-    res.redirect('clock')
-  })
+	SetTime.create ({
+		settime: req.body.time
 
-
-})
-
-app.post("/currenttime", (req, res) => {
-
-  console.log(typeof req.body.time)
-
-  res.send("send me thousands of responses please")
-
-  
-  SetTime.findAll({
-    where: {settime: req.body.time}
-  }).then(cheese => {
-    console.log(cheese.length)
-    if (cheese.length !== 0) {
-      from_email = new helper.Email("jimmyvoskuil@msn.com")
-      to_email = new helper.Email("yarithjoseph@gmail.com")
-      subject = "Sending with SendGrid is Fun"
-      content = new helper.Content("text/plain", "and easy to do anywhere, even with Node.js")
-      mail = new helper.Mail(from_email, subject, to_email, content)
-      console.log(process.env.SENDGRID_API_KEY)
-      var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-      var request = sg.emptyRequest({
-        method: 'POST',
-        path: '/v3/mail/send',
-        body: mail.toJSON()
-      });
-
-      sg.API(request, function(error, response) {
-        console.log(response.statusCode)
-        console.log(response.body)
-        console.log(response.headers)
-      })
-    }
-    else {
-      console.log("no time like this in the database")
-    }
-  })
+	}).then( () => {
+		console.log(req.body.time)
+		res.redirect('clock')
+	})
 
 
 })
+
+var currentTime
+var hourNow 
+
+function checkTime(i) {
+	if (i < 10) {
+		i = "0" + i
+	};
+	return i;
+}
+setInterval( ()=>{
+	
+	var d       = new Date();
+	var hour    = d.getHours();  /* Returns the hour (from 0-23) */
+	hour = checkTime(hour);
+	var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
+	minutes = checkTime(minutes);
+	var result  = hour + ":"  + minutes;
+	var hourNow = result.toString();
+
+	console.log(hourNow)
+
+
+	SetTime.findAll({
+		where: {settime: hourNow}
+	}).then(cheese => {
+		console.log(cheese.length)
+		if (cheese.length !== 0) {
+			from_email = new helper.Email("insert mail")
+			to_email 	= new helper.Email("insert mail")
+			subject = "Please Wake Up!!!"
+			content = new helper.Content("text/plain", "Good Mythical Morning! Welcome out of bed or you know what will happen to you!")
+			mail = new helper.Mail(from_email, subject, to_email, content)
+			console.log(process.env.SENDGRID_API_KEY)
+			var request = sg.emptyRequest({
+				method: 'POST',
+				path: '/v3/mail/send',
+				body: mail.toJSON()
+			});
+
+			sg.API(request, function(error, response) {
+				console.log(response.statusCode)
+				console.log(response.body)
+				console.log(response.headers)
+			})
+
+
+			var data = JSON.stringify({
+				apiKey: process.env.API_KEY,
+				apiSecret: process.env.API_SECRET,
+				to: '+31 insert mobiel or home number',
+				from: '+31 inset mobiel or home number',
+				text: 'Good Mythical, Welcome! Time to get out of bed and go go make something of your day :)'
+			});
+
+			var options = {
+				host: 'rest.nexmo.com',
+				path: '/sms/json',
+				port: 443,
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Content-Length': Buffer.byteLength(data)
+				}
+			};
+
+			var req = https.request(options);
+
+			req.write(data);
+			req.end();
+
+			var responseData = '';
+			req.on('response', function(res){
+				res.on('data', function(chunk){
+					responseData += chunk;
+				});
+
+				res.on('end', function(){
+					console.log(JSON.parse(responseData));
+				});
+			});
+			nexmo.calls.create({
+				to: [{
+					type: 'phone',
+					number: '+31 insert number'
+				}],
+				from: {
+					type: 'phone',
+					number: '+31 insert number'
+				},
+				answer_url: ['https://nexmo-community.github.io/ncco-examples/first_call_talk.json']
+			},
+			function(err, res) {
+				if(err) { console.error(err); }
+				else { console.log(res); }
+			}
+			);
+
+		}
+		else {
+			console.log("no time like this in the database")
+		}
+	})
+
+}, 60000)
+
+// app.post("/currenttime", (req, res) => {
+
+// 	})
+
+
+// })
 
 // NEW !!!
 // Change password
@@ -569,7 +662,7 @@ db.sync ( {force: true} ).then( () => {
 
 // App will listen on 8000
 app.listen(8000, () => {
-    console.log( 'Server running' )
+	console.log( 'Server running' )
 })
 
 
