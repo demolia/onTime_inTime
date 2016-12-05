@@ -1,11 +1,50 @@
 doctype html
 html
-	title On time In time
+	title On time In time - Login
 	meta(charset='utf-8')
 	link(href='./css/foundation.min.css', rel='stylesheet')
 	link(href='./index.css', rel='stylesheet')
 
-	body.indexbg
+	body
+		div.container
+
+			section.hero
+				.row.intro
+					.small-centered.medium-uncentered.medium-6.large-7.columns
+						h1 On Time, in Time
+						p
+							| The app which makes sure you'll get out of bed on time!
+							br
+							|Login with &nbsp
+							a(href='/auth/facebook') Facebook, &nbsp
+							| your &nbsp
+							a.loginform(href='#loginform') username &nbsp
+							| or Sign up &nbsp
+							a.registerform(href='#registerform') here!
+					.small-centered.medium-uncentered.medium-6.large-5.columns
+						.tech-img
+						br
+						a.align-right(href='#openModal') FAQ
+
+		div.row.divregister
+				div.medium-6.columns.end.large-offset-3
+					div.card.float-center.cardcenter
+						div.content
+						span.title.cardcenterh1 On time In Time Register form
+						p Please register 
+
+						form(method='POST', action='/sign', autocomplete="off")
+							Label(for="name") Name 
+							input(name="name", type="text", id="name" placeholder="First Name")
+							Label(for="email") Email 
+							input(name="email", type="email", id="email" placeholder="Email adress")
+							Label(for="password") Password 
+							input(name="password", type="password", id="password" placeholder="Password")
+							Label(for="phone") Phone 
+							input(name="phone", type="text", id="phone" placeholder="Phones")
+							input(type="submit", value="Submit")
+							p= message
+
 		div.row.divlogin
 			div.medium-6.columns.end.large-offset-3
 				div.card.float-center.cardcenter
@@ -20,34 +59,6 @@ html
 						input(name="password", type="password", id="password" placeholder="Secrate")
 						input(type="submit", value="Submit")
 						p= message
-
-						a(href="/auth/facebook") Login with Facebook
-
-
-					div.action
-						a.registerform(href='#') Registres
-						a(href='#openModal') FAQ
-
-		div.row.divregister
-			div.medium-6.columns.end.large-offset-3
-				div.card.float-center.cardcenter
-					div.content
-					span.title.cardcenterh1 On time In Time Register form
-					p Please register 
-
-					form(method='POST', action='/sign', autocomplete="off")
-						Label(for="name") Name 
-						input(name="name", type="text", id="name" placeholder="First Name")
-						Label(for="email") Email 
-						input(name="email", type="email", id="email" placeholder="Email adress")
-						Label(for="password") Pasword 
-						input(name="password", type="password", id="password" placeholder="Password")
-						input(type="submit", value="Submit")
-					p= message
-
-					div.action
-						a.loginform(href='#') Log-in
-						a(href='#openModal') FAQ
 
 	div#openModal.modalDialog
 		div
@@ -67,4 +78,6 @@ html
 script(type='text/javascript', src='./jquery-3.1.1.min.js')
 script(type='text/javascript', src='./js/vendor/foundation.min.js')
 script(type='text/javascript', src='/main.js')
-	
+
+
+
