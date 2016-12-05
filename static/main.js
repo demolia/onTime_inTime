@@ -60,24 +60,23 @@ $(document).ready(function() {
 
   }
 
+  // setInterval(function () {
 
-  setInterval(function () {
-
-    var d       = new Date();
-    var hour    = d.getHours();  /* Returns the hour (from 0-23) */
-    hour = checkTime(hour);
-    var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
-    minutes = checkTime(minutes);
-    var result  = hour + ":"  + minutes;
-    var hourNow = result.toString();
+  //   var d       = new Date();
+  //   var hour    = d.getHours();  /* Returns the hour (from 0-23) */
+  //   hour = checkTime(hour);
+  //   var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
+  //   minutes = checkTime(minutes);
+  //   var result  = hour + ":"  + minutes;
+  //   var hourNow = result.toString();
   
 
 
-    $.post("/currenttime", {time: hourNow}, function (responsedata) {
-      console.log("post made " + hourNow)
-    })
+  //   $.post("/currenttime", {time: hourNow}, function (responsedata) {
+  //     console.log("post made " + hourNow)
+  //   })
     
-  }, 60000)
+  // }, 60000)
 
 $(".divregister").hide()
 
