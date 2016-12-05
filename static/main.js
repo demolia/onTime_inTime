@@ -85,9 +85,9 @@ $(document).ready(function() {
 
 
 
-
-
 $(".divregister").hide()
+
+$(".divlogin").hide()
 
 $('.registerform').click(function(){ showregister(); return false; })
 
@@ -106,6 +106,7 @@ function showlogin() {
 	// To show Div Block
 	$(".divlogin").show()
 }
+
 
 
 
