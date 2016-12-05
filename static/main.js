@@ -87,9 +87,6 @@ $(document).ready(function() {
       }
 
 
-    }
-
-
     $(".divregister").hide()
 
     $(".divlogin").hide()
@@ -103,14 +100,14 @@ $(document).ready(function() {
 	$(".divregister").show()
     }
 
-$('.loginform').click(function(){ showlogin(); return false; })
+  $('.loginform').click(function(){ showlogin(); return false; })
 
     function showlogin() {
 	// To Hide Div Block
 	   $(".divregister").hide()
 	// To show Div Block
 	   $(".divlogin").show()
-    }
+     }
 })
 
 

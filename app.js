@@ -14,7 +14,7 @@ const nexmo = new Nexmo({
 	applicationId: process.env.appId,
 	privateKey: __dirname + '/private.key',
 });
-// const bcrypt 	 = require( 'bcrypt' )
+const bcrypt 	 = require( 'bcrypt' )
 // NEW 	!!!!
 const flash 	 = require( 'connect-flash' )
 // const passport 	 = require( 'passport' ) 
@@ -241,17 +241,10 @@ let User = db.define( 'user', {
 } )
 
 let SetTime = db.define('settime', {
+    settime: sequelize.STRING,
 
 
-  settime: sequelize.STRING,
-
-	settime: sequelize.STRING,
-
-
-	password: sequelize.STRING,
-	number: sequelize.STRING
-
-    settime: sequelize.STRING,	
+	
 
 } )
 
@@ -404,11 +397,12 @@ setInterval( ()=>{
 
 
 	SetTime.findAll({
-		where: {settime: hourNow}
+		where: {settime: hourNow},
+			include: [{model: db.User}] 
 	}).then(cheese => {
 		console.log(cheese.length)
 		if (cheese.length !== 0) {
-			from_email = new helper.Email("insert mail")
+			from_email = new helper.Email("user.email")
 			to_email 	= new helper.Email("insert mail")
 			subject = "Please Wake Up!!!"
 			content = new helper.Content("text/plain", "Good Mythical Morning! Welcome out of bed or you know what will happen to you!")
@@ -430,7 +424,7 @@ setInterval( ()=>{
 			var data = JSON.stringify({
 				apiKey: process.env.API_KEY,
 				apiSecret: process.env.API_SECRET,
-				to: '+31 insert mobiel or home number',
+				to: 'user.phone',
 				from: '+31 inset mobiel or home number',
 				text: 'Good Mythical, Welcome! Time to get out of bed and go go make something of your day :)'
 			});
@@ -464,7 +458,7 @@ setInterval( ()=>{
 			nexmo.calls.create({
 				to: [{
 					type: 'phone',
-					number: '+31 insert number'
+					number: 'user.phone'
 				}],
 				from: {
 					type: 'phone',
