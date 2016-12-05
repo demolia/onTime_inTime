@@ -2,8 +2,10 @@ doctype html
 html
 	head
 		title Clockwork
+		meta(name='viewport', content='width=device-width,initial-scale=1')
+		link(href='./css/foundation.min.css', rel='stylesheet')
 		link(rel='stylesheet', type='text/css', href='./style.css')
-		link(href='https://fonts.googleapis.com/css?family=Black+Ops+One', ,='', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
 	body
 		.loader
 			#display
@@ -11,10 +13,10 @@ html
 				#time
 				#weekdays
 		form(action='/clock', method='POST')
-			label(for='setTime') setTime: 
+			label(for='setTime')  
 			input#setTime(type='time', name='time', value='07:00:00')
-			button(type='submit')  Set Time 
-		.spinner
-		.spinner2
+			button.button.round(type='submit')  
+		//- .spinner
+		//- .spinner2
 		script(src='./jquery-3.1.1.min.js')
 		script(src='./main.js')

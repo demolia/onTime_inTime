@@ -4,8 +4,10 @@
 ////////////////////////////////////////////
 */
 body {
-	background-image: url("bg.jpg");
+	background-image: url("bg2.jpg");
 	background-size: cover;;
+	margin: 0px;
+	padding: 0px;
 }
 
 
@@ -17,10 +19,15 @@ body {
 /* partent element of the timer div and the display div. The loader is ONLY for the outside of the clock*/
 .loader {
 	
-	border: 15px solid hsla(351, 91%, 33%, 0.75);
-	border-radius: 100%;
-	width: 400px;
-	height: 400px;
+	border: 15px solid hsla(360, 100%, 100%, 0.16);
+	border-radius: 10px;
+	width: 340px;
+	height: 500px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	box-sizing: content-box;
 	
 	
 
@@ -42,8 +49,9 @@ body {
 #time {
 	font-size: 4.5em;
 	color: hsla(360, 100%, 100%, 0.75);
-	font-family: 'Black Ops One', cursive;
+	font-family: 'Roboto', sans-serif;
 	text-align: center;
+	opacity: 1.0;
 
 
 
@@ -60,18 +68,46 @@ body {
 
 /* this part is the display of the clock or the background if you will*/
 #display {
-	background: -moz-linear-gradient(top, hsla(247,20%,9%,1) 0%, hsla(244,20%,17%,1) 49%, hsla(247,20%,9%,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, hsla(247,20%,9%,1) 0%,hsla(244,20%,17%,1) 49%,hsla(247,20%,9%,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13121b', endColorstr='#13121b',GradientType=0 ); /* IE6-9 */
-
-	width:400px;
-	height: 400px;
-	border-radius: 100%;
+	background: -moz-linear-gradient(top, hsla(247,43%,4%,1) 0%, hsla(242,48%,11%,1) 29%, hsla(263,61%,10%,1) 75%, hsla(226,51%,6%,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, hsla(247,43%,4%,1) 0%,hsla(242,48%,11%,1) 29%,hsla(263,61%,10%,1) 75%,hsla(226,51%,6%,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, hsla(247,43%,4%,1) 0%,hsla(242,48%,11%,1) 29%,hsla(263,61%,10%,1) 75%,hsla(226,51%,6%,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#07060f', endColorstr='#080c19',GradientType=0 ); /* IE6-9 */
+	opacity: 0.88;
+	width: 340px;
+	height: 500px;
+	border-radius: 10px;
 
 
 }
 
+#setTime {
+	position: absolute;
+	left: 50%;
+	top: 66%;
+	width: 6em;
+	transform: translate(-50%, -50%);
+
+}
+
+.button.round {
+	position: absolute;
+	left: 50%;
+	top: 78%;
+	transform: translate(-50%, -50%);
+	padding-left: 225px;
+	padding-bottom: 46px;
+
+	background:url(button.png) no-repeat;
+
+}
+.button.round:active {
+	background-image: url("button-clicked.png"); 
+	border: none;
+}
+
+input {
+	opacity: 0.6;
+}
 
 .spinner {
 	width: 200px;
