@@ -4,19 +4,19 @@ const app        = express( )
 const bodyParser = require( 'body-parser' )
 const session    = require( 'express-session' )
 const sequelize  = require( 'sequelize' )
-const helper	 = require('sendgrid').mail
-const https 	 = require('https');
-const Nexmo = require('nexmo');
-const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-const nexmo = new Nexmo({
-	apiKey: process.env.API_KEY,
-	apiSecret: process.env.API_SECRET,
-	applicationId: process.env.appId,
-	privateKey: __dirname + '/private.key',
-});
+// const helper	 = require('sendgrid').mail
+// const https 	 = require('https');
+// const Nexmo = require('nexmo');
+// const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+// const nexmo = new Nexmo({
+// 	apiKey: process.env.API_KEY,
+// 	apiSecret: process.env.API_SECRET,
+// 	applicationId: process.env.appId,
+// 	privateKey: __dirname + '/private.key',
+// });
 const bcrypt 	 = require( 'bcrypt' )
-// NEW 	!!!!
-const flash 	 = require( 'connect-flash' )
+// // NEW 	!!!!
+// const flash 	 = require( 'connect-flash' )
 // const passport 	 = require( 'passport' ) 
 // const FacebookStrategy = require( 'passport-facebook' ).Strategy
 // const FacebookTokenStrategy = require( 'passport-facebook-token' )
@@ -307,7 +307,7 @@ app.get ('/', (req, res) => {
 app.get( '/account', ( req, res ) => {
 
 	console.log( 'pong' )
-	res.render( 'account' )
+	res.render( 'clock' )
 	user: req.session.user
 })
 

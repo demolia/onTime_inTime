@@ -178,3 +178,28 @@ html, body {
       text-align: right; } }
 
 
+/*
+////////////////////////////////////////////
+ THIS IS THE SECTION FOR THE LANDING PAGE
+////////////////////////////////////////////
+*/
+
+.divregister {
+  position:fixed;
+  top: 270px;
+  left: 0px;
+  width: 100%;
+  height: 60%;
+  display: none;
+}
+
+.divlogin {
+  position:fixed;
+  top: 270px;
+  left: 0px;
+  width: 100%;
+  height: 60%;
+  display: none;
+}
+
+

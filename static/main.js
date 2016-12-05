@@ -1,4 +1,25 @@
 $(document).ready(function() {
+  // Show only one form
+  $('.divregister').hide(function() {
+  })
+
+
+  // On Click SignUp It Will Hide Login Form and Display Registration form
+  $('#registerform').click(function() {
+    $('.divregister').slideUp('slow', function() {
+      $('.divlogin').slideDown('slow');
+    })
+  })
+
+
+  // On Click SignIn It Will Hide Registration Form and Display Login Form
+  $('#loginform').click(function() {
+    $('.divlogin').slideUp('slow', function() {
+      $('.divregister').slideDown('slow');
+    })
+  })
+
+
   startTime()
 
   var currentTime
@@ -87,27 +108,29 @@ $(document).ready(function() {
       }
 
 
-    $(".divregister").hide()
+ //    $(".divregister").hide()
 
-    $(".divlogin").hide()
+ //    $(".divlogin").hide()
 
-    $('.registerform').click(function(){ showregister(); return false; })
+ //    $('.registerform').click(function(){ showregister(); return false; })
 
-    function showregister() {
-	// To Hide Div Block
-	$(".divlogin").hide()
-	// To show Div Block
-	$(".divregister").show()
-    }
+ //    function showregister() {
+	// // To Hide Div Block
+	// $(".divlogin").hide()
+	// // To show Div Block
+	// $(".divregister").show()
+ //    }
 
-  $('.loginform').click(function(){ showlogin(); return false; })
+ //  $('.loginform').click(function(){ showlogin(); return false; })
 
-    function showlogin() {
-	// To Hide Div Block
-	   $(".divregister").hide()
-	// To show Div Block
-	   $(".divlogin").show()
-     }
+ //    function showlogin() {
+	// // To Hide Div Block
+	//    $(".divregister").hide()
+	// // To show Div Block
+	//    $(".divlogin").show()
+ //     }
+
+
 })
 
 

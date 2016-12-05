@@ -1,12 +1,24 @@
 doctype html
 html
 	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		title Clockwork
 		meta(name='viewport', content='width=device-width,initial-scale=1')
 		link(href='./css/foundation.min.css', rel='stylesheet')
 		link(rel='stylesheet', type='text/css', href='./style.css')
 		link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
 	body.bgImage
+		nav#mySidenav.w3-sidenav.w3-white.w3-card-2(style='display:none')
+			ul.w3-closenav.w3-large(href='javascript:void(0)', onclick='w3_close()') Close ×
+				li
+					a(href='http://localhost:8000/settings') Change Password
+				li
+					a(href='#') Last Login {show time}
+		header.w3-container.w3-teal
+			span.w3-opennav.w3-xlarge(onclick='w3_open()') 
+				img(src='/img/menu.png')
 		.loader
 			#display
 				#date
@@ -20,3 +32,10 @@ html
 		//- .spinner2
 		script(src='./jquery-3.1.1.min.js')
 		script(src='./main.js')
+		script.
+			function w3_open() {
+			document.getElementById("mySidenav").style.display = "block";
+			}
+			function w3_close() {
+			document.getElementById("mySidenav").style.display = "none";
+			}
